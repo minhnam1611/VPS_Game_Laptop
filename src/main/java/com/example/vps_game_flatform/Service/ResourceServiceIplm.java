@@ -71,4 +71,15 @@ public class ResourceServiceIplm implements ResourceService {
             return Repo_resource.save(resourceOld);
         }
     }
+
+    @Override
+    public Integer deleteByID(int id) {
+        SysResource rs = findById(id);
+        if(rs == null){
+            return 0;
+        }else{
+            Repo_resource.delete(rs);
+            return 1;
+        }
+    }
 }

@@ -37,6 +37,15 @@ public class ResourceController {
         resourceService.save(resourceNew);
         return new ReponseBase(200,"Success");
     }
+    @DeleteMapping("/delete-resource")
+    public ReponseBase deleteResource(@RequestParam int ids){
+        int dlt = resourceService.deleteByID(ids);
+        if(dlt == 1){
+            return new ReponseBase(200,"Success");
+        }else{
+            return new ReponseBase(207, "ID Không tồn tại");
+        }
+    }
 
 
 }

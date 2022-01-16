@@ -13,4 +13,6 @@ public interface ResourceService {
     SysResource findById(int id);
 
     SysResource save(SysResource resourceNew);
+
+    Integer deleteByID(int id);
 }
