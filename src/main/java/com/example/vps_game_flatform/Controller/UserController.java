@@ -24,15 +24,30 @@ public class UserController {
     private UserRepository userRepository;
 
     @GetMapping("/list-user")
-    public List<SysUser> getListUser(
-            @RequestParam(defaultValue = "a") String loginName,
-            @RequestParam(defaultValue = "a") String fullName,
-            @RequestParam(defaultValue = "a") String email,
-            @RequestParam(defaultValue = "a") String msisdn,
-            @RequestParam(defaultValue = "10") int page,
-            @RequestParam(defaultValue = "1") int pageSize
+    public ReponseObject getListUser(
+            @RequestParam(required = false) String loginName,
+            @RequestParam(required = false) String fullName,
+            @RequestParam(required = false) String email,
+            @RequestParam(required = false) String msisdn,
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(defaultValue = "10") int pageSize
     ){
-        return userService.getListUser(loginName,fullName,email,msisdn,page,pageSize);
+
+        int totalUsers = userService.getTotalUsers(loginName,fullName,email,msisdn);
+        int totalPage =0;
+        if(totalUsers%pageSize==0){
+            totalPage = totalUsers/pageSize;
+        }else{
+            totalPage = totalUsers/pageSize+1;
+        }
+        int start = (page-1)*pageSize;
+        if(page > totalPage){
+            return new ReponseObject(ReponseObject.Fail,"Bab Request: Trang không tồn tại ",totalPage,"");
+        }
+        List<SysUser> list = userService.getListUser(loginName,fullName,email,msisdn,pageSize,start);
+        return new ReponseObject(ReponseObject.SUCCESS,"SUCCESS",totalPage,list);
+        //System.out.println("Tong so trang: "+totalPage);
+        //return userService.getListUser(loginName,fullName,email,msisdn,pageSize,start);
 
     }
 }

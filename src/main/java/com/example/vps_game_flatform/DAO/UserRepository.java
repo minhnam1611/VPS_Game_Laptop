@@ -9,13 +9,19 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<SysUser, Integer> {
-    // ?1
+    // Start bắt đầu bằng 0
     @Query(value = "SELECT * FROM sys_user " +
-            "WHERE (?1 = 'a' OR ?1 = login_name ) " +
-            "AND (?2 ='a' OR ?2 = full_name )  " +
-            "AND (?3 ='a' OR ?3 = email  ) " +
-            "AND (?4 ='a' OR ?4 = phone_number ) " +
+            "WHERE (?1 IS NULL OR login_name = ?1) " +
+            "AND (?2 IS NULL OR full_name = ?2) " +
+            "AND (?3 IS NULL OR email = ?3 ) " +
+            "AND (?4 IS NULL OR phone_number = ?4) " +
             "LIMIT ?5 OFFSET ?6",nativeQuery = true)
-    List<SysUser> findListUser(String loginName, String fullName, String email, String msisdn, int page, int pageSize);
+    List<SysUser> findListUserPagi(String loginName, String fullName, String email, String msisdn, int limit, int start);
 
+    @Query(value = "SELECT * FROM sys_user " +
+            "WHERE (?1 IS NULL OR login_name = ?1) " +
+            "AND (?2 IS NULL OR full_name = ?2) " +
+            "AND (?3 IS NULL OR email = ?3 ) " +
+            "AND (?4 IS NULL OR phone_number = ?4) " ,nativeQuery = true)
+    List<SysUser> getTotalUsers(String loginName, String fullName, String email, String msisdn);
 }

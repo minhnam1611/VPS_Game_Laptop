@@ -13,8 +13,14 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository Repo_user;
 
+
     @Override
-    public List<SysUser> getListUser(String loginName,String fullName, String email, String msisdn,int page, int pageSize) {
-        return Repo_user.findListUser(loginName,fullName,email,msisdn,page,pageSize);
+    public Integer getTotalUsers(String loginName, String fullName, String email, String msisdn) {
+        return Repo_user.getTotalUsers(loginName,fullName,email,msisdn).size();
+    }
+
+    @Override
+    public List<SysUser> getListUser(String loginName,String fullName, String email, String msisdn, int limit, int start) {
+        return Repo_user.findListUserPagi(loginName,fullName,email,msisdn,limit,start);
     }
 }
