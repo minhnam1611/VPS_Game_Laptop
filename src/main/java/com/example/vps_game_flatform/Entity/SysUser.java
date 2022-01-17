@@ -32,15 +32,15 @@ public class SysUser {
 
     private String phone_number;
 
-    private DecimalFormat status;
+    private Integer status;
 
-    private DecimalFormat new_id;
+    private Integer new_id;
 
     private Date change_password_date;
 
-    private DecimalFormat need_change_password;
+    private Integer need_change_password;
 
-    private DecimalFormat num_of_login;
+    private Integer num_of_login;
 
     private Date lastest_login_time;
 

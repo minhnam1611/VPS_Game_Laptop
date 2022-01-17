@@ -30,6 +30,7 @@ public class ResourceServiceIplm implements ResourceService {
         }
     }
 
+    // Tổng số trang (Phân trang)
     @Override
     public Integer TotalPage(String code, String name , int pageSize) {
 
