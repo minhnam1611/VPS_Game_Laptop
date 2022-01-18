@@ -8,4 +8,5 @@ public interface UserService {
 
     Integer getTotalUsers(String loginName,String fullName, String email, String msisdn);
     List<SysUser> getListUser(String loginName,String fullName, String email, String msisdn,int page, int pageSize);
+    List<SysUser> searchUser(String keyword);
 }

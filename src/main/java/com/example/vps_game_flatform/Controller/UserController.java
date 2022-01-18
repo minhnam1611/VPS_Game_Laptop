@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -20,8 +21,6 @@ public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
-    @Autowired
-    private UserRepository userRepository;
 
     @GetMapping("/list-user")
     public ReponseObject getListUser(
@@ -46,8 +45,14 @@ public class UserController {
         }
         List<SysUser> list = userService.getListUser(loginName,fullName,email,msisdn,pageSize,start);
         return new ReponseObject(ReponseObject.SUCCESS,"SUCCESS",totalPage,list);
-        //System.out.println("Tong so trang: "+totalPage);
-        //return userService.getListUser(loginName,fullName,email,msisdn,pageSize,start);
-
     }
+    @GetMapping("/search-user")
+    public ReponseObject searchUser(@RequestParam(required = false) String keyWord){
+        List<SysUser> list = userService.searchUser(keyWord);
+        if(list.size()==0) {
+            return new ReponseObject(ReponseObject.SUCCESS, "Không tìm thấy ", 1, "");
+        }
+        return new ReponseObject(ReponseObject.SUCCESS,"OK",1,list);
+    }
+
 }

@@ -23,4 +23,9 @@ public class UserServiceImpl implements UserService{
     public List<SysUser> getListUser(String loginName,String fullName, String email, String msisdn, int limit, int start) {
         return Repo_user.findListUserPagi(loginName,fullName,email,msisdn,limit,start);
     }
+
+    @Override
+    public List<SysUser> searchUser(String keyword) {
+        return Repo_user.searchUser(keyword);
+    }
 }
