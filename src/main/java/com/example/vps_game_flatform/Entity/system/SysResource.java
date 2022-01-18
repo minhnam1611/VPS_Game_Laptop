@@ -1,4 +1,4 @@
-package com.example.vps_game_flatform.Entity;
+package com.example.vps_game_flatform.Entity.system;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "sys_resource")
+@Table(name = "sys_resource",schema = "vps_game_flatform")
 public class SysResource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

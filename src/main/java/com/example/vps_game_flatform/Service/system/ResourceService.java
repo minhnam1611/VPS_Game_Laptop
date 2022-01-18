@@ -1,6 +1,6 @@
-package com.example.vps_game_flatform.Service;
+package com.example.vps_game_flatform.Service.system;
 
-import com.example.vps_game_flatform.Entity.SysResource;
+import com.example.vps_game_flatform.Entity.system.SysResource;
 
 import java.util.List;
 

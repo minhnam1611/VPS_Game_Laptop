@@ -1,7 +1,7 @@
-package com.example.vps_game_flatform.Service;
+package com.example.vps_game_flatform.Service.system;
 
-import com.example.vps_game_flatform.DAO.UserRepository;
-import com.example.vps_game_flatform.Entity.SysUser;
+import com.example.vps_game_flatform.DAO.system.UserRepository;
+import com.example.vps_game_flatform.Entity.system.SysUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

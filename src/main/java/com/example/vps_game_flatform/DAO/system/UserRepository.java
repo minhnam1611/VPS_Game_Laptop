@@ -1,6 +1,6 @@
-package com.example.vps_game_flatform.DAO;
+package com.example.vps_game_flatform.DAO.system;
 
-import com.example.vps_game_flatform.Entity.SysUser;
+import com.example.vps_game_flatform.Entity.system.SysUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

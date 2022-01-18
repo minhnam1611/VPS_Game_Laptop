@@ -1,18 +1,14 @@
 package com.example.vps_game_flatform.Controller;
 
-import com.example.vps_game_flatform.DAO.UserRepository;
-import com.example.vps_game_flatform.Entity.ReponseObject;
-import com.example.vps_game_flatform.Entity.SysUser;
-import com.example.vps_game_flatform.Service.UserService;
-import com.example.vps_game_flatform.Service.UserServiceImpl;
+import com.example.vps_game_flatform.Entity.system.ReponseObject;
+import com.example.vps_game_flatform.Entity.system.SysUser;
+import com.example.vps_game_flatform.Service.system.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -54,5 +50,7 @@ public class UserController {
         }
         return new ReponseObject(ReponseObject.SUCCESS,"OK",1,list);
     }
+
+
 
 }

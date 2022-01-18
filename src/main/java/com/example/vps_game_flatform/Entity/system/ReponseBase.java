@@ -1,4 +1,4 @@
-package com.example.vps_game_flatform.Entity;
+package com.example.vps_game_flatform.Entity.system;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

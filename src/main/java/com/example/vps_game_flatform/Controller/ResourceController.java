@@ -1,9 +1,9 @@
 package com.example.vps_game_flatform.Controller;
 
-import com.example.vps_game_flatform.Entity.ReponseBase;
-import com.example.vps_game_flatform.Entity.ReponseObject;
-import com.example.vps_game_flatform.Entity.SysResource;
-import com.example.vps_game_flatform.Service.ResourceService;
+import com.example.vps_game_flatform.Entity.system.ReponseBase;
+import com.example.vps_game_flatform.Entity.system.ReponseObject;
+import com.example.vps_game_flatform.Entity.system.SysResource;
+import com.example.vps_game_flatform.Service.system.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

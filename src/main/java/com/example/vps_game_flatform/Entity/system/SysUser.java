@@ -1,4 +1,4 @@
-package com.example.vps_game_flatform.Entity;
+package com.example.vps_game_flatform.Entity.system;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +14,7 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "sys_user")
+@Table(name = "sys_user",schema = "vps_game_flatform")
 public class SysUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
