@@ -1,6 +1,8 @@
 package com.example.vps_game_flatform.Config;
 
+import com.example.vps_game_flatform.Entity.system.SysMenu;
 import com.example.vps_game_flatform.Entity.system.SysResource;
+import com.example.vps_game_flatform.Entity.system.SysRole;
 import com.example.vps_game_flatform.Entity.system.SysUser;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -43,6 +45,8 @@ public class ConfigSystemDatasource {
                 .dataSource(systemDataSource())
                 .packages(SysResource.class)
                 .packages(SysUser.class)
+                .packages(SysRole.class)
+                .packages(SysMenu.class)
                 .build();
     }
 

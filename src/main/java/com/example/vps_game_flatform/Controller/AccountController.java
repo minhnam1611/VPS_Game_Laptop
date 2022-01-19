@@ -22,6 +22,14 @@ public class AccountController {
     @Autowired
     TokensService tokenService;
 
+    @PostMapping("/register")
+    public Users RegisterUser(@RequestBody Users users){
+        Users user = userService.findUserByUsername(users.getUsername());
+        if(user==null){
+            return userService.saveUser(users);
+        }
+        return null;
+    }
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Users user){
         UserPrincipal userPrincipal = userService.findByUsername(user.getUsername());

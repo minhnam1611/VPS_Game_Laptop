@@ -5,6 +5,7 @@ import com.example.vps_game_flatform.Entity.system.ReponseObject;
 import com.example.vps_game_flatform.Entity.system.SysResource;
 import com.example.vps_game_flatform.Service.system.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +16,9 @@ public class ResourceController {
     @Autowired
     private ResourceService resourceService;
     //Danh sách tài nguyên
+
     @GetMapping("/list-resource")
+    @PreAuthorize("hasAnyAuthority('READ')")
     public ReponseObject getResource(
             @RequestParam(defaultValue = "1") int page,
             @RequestParam(defaultValue = "3") int pageSize,
@@ -31,11 +34,13 @@ public class ResourceController {
    }
     //Lưu thông tin tài nguyên : Thêm mới nếu id_Resource chưa có, sửa nếu đã có
     @PostMapping("/save-resource")
+    @PreAuthorize("hasAnyAuthority('INSERT')")
     public ReponseBase upsertResource(@RequestBody SysResource resourceNew){
         resourceService.save(resourceNew);
         return new ReponseBase(200,"Success");
     }
     @DeleteMapping("/delete-resource")
+    @PreAuthorize("hasAnyAuthority('DELETE')")
     public ReponseBase deleteResource(@RequestParam int ids){
         int dlt = resourceService.deleteByID(ids);
         if(dlt == 1){
