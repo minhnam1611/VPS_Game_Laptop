@@ -1,5 +1,6 @@
 package com.example.vps_game_flatform.Controller;
 
+import com.example.vps_game_flatform.Entity.system.ReponseBase;
 import com.example.vps_game_flatform.Entity.system.ReponseObject;
 import com.example.vps_game_flatform.Entity.system.SysMenu;
 import com.example.vps_game_flatform.Entity.system.SysRole;
@@ -44,17 +45,34 @@ public class MenuController {
                 if (page > totalPage) {
                     return new ReponseObject(ReponseObject.Fail, "<Load phân trang> Trang không tồn tại", totalPage, "");
                 } else {
-                    return new ReponseObject(ReponseObject.SUCCESS, "<Load phân trang> OK", totalPage, menuService.getMenuPagi(code, name, url, totalPage, start));
+                    return new ReponseObject(ReponseObject.SUCCESS, "<Load phân trang> OK", totalPage, menuService.getMenuPagi(code, name, url,pageSize, start));
                 }
             }
             return new ReponseObject(ReponseObject.Fail, "<Type Không xác định Bab Request>", 0, "");
         }
     }
     @PostMapping("/save-menu")
-    public ReponseObject upsertMenu(
+    @PreAuthorize("hasAnyAuthority('INSERT')")
+    public ReponseBase upsertMenu(
             @RequestBody SysMenu newMenu
     ){
-        return null;
+
+        Boolean check = menuService.insertMenu(newMenu);
+        if(check==true){
+            return new ReponseBase(ReponseObject.SUCCESS , "Inserted: OK");
+        }else{
+            return new ReponseBase(ReponseObject.SUCCESS , "Updated: OK");
+        }
+    }
+    @DeleteMapping("/delete-menu/{idm}")
+    @PreAuthorize("hasAnyAuthority('DELETE')")
+    public ReponseBase deleteMenu(@PathVariable int idm){
+        Boolean check = menuService.deleteMenu(idm);
+        if(check == true){
+            return new ReponseBase(ReponseObject.SUCCESS , "Deleted: OK");
+        }else {
+            return new ReponseBase(ReponseObject.Fail , "Delete Failed");
+        }
     }
 
 }

@@ -21,4 +21,7 @@ public interface MenuRepository extends JpaRepository<SysMenu,Integer> {
             "AND ( name = ?2 OR ?2 IS NULL  ) " +
             "AND ( url =?3 OR ?3 IS NULL)",nativeQuery = true)
     List<SysMenu>getMenu(String code, String name, String url);
+    @Query(value = "SELECT * FROM sys_menu " +
+            "WHERE sys_menu_id = ?1",nativeQuery = true)
+    SysMenu getBySys_menu_id(int sys_menu_id);
 }
